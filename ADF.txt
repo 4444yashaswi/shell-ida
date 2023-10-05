@@ -1,0 +1,36 @@
+Day 16
+Data Factory:
+- Creating a Storage Account (Gen2) and uploading a file as initial setup
+- SAS					- Access Key
+  . Shared Access Signature		  . This is permanent/ for lifetime, i.e., it never changes
+  . Time bounded			  . Not time bounded by Default, can be made time bounded at will
+
+The storage account can be accessed using the generated SAS token.
+SAS can also be generated for specific container or files as we please.
+
+Since Access Key cannot be changed, we must create a key vault and make this key vault time bounded in order to make it more secure
+
+- Creating a key vault and a secret with the access key for the storage account contianer
+- For checking and assigning the role access to the users, Access Control (IAM [Identity Access Manager]) is used.
+
+Introduction to Azure Data Factory:
+- Basic/ Generic steps -> ETL or ELT (E: Extraction, T: Transformation, L: Loading)
+- Extraction and Loading can be done using *ADF* and also basic transformation ( ADF is an ETL tool )
+- For complicated Transformations, ADB (Azure Data Bricks) is used.
+- ADF is used for data orchestration. Different components of ADF are:
+	- Pipelines ** [Pipeline creation requires all the above mentioned components (including pipeline itself)]
+	- Activities			- Datasets
+	- Linked Services		- Integration Runtime
+	- Triggers			- Data Flow
+    . Pileline is basically one or more activities
+						__
+						| Server	- Integration Runtime (Further Classifications)
+    . Types of access and access providers    <=| DB		- Linked Service
+						|_Table		- Data Set
+						
+- Types of IR: 
+    . Azure Auto Resolved - Used for Source or Destination present on cloud.
+    . Self Hosted Integration Runtime - Used for Source or Destination present on premesis.
+    . Azure SSIS - Used if we want to execute existing SSIS package.
+
+- Creating a Pipeline (Set of one or more activities)
